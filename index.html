@@ -30,12 +30,6 @@ section: index
       color: white;
     }
 
-    body.film-active .nav-action {
-      border-color: #ffffff99;
-      background: #17192399;
-      color: white;
-    }
-
     body.film-active .brand-handwriting {
       filter: brightness(0) invert(1);
     }
@@ -46,14 +40,16 @@ section: index
       flex-direction: column;
       gap: 20px;
       height: 100svh;
-      min-height: 760px;
+      min-height: 660px;
+      justify-content: center;
       padding: 140px 3% 28px;
     }
 
     .hero-visual {
       position: relative;
       flex: 1;
-      min-height: 300px;
+      min-height: 0;
+      max-height: calc(94vw * 1045 / 1567);
       overflow: hidden;
       background: #e6e8dc;
     }
@@ -85,44 +81,48 @@ section: index
       line-height: 1;
     }
 
-    .hero-actions {
+    /* 下へ進めることを、文章と動く線で案内 */
+    .scroll-guide {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       flex-shrink: 0;
-      width: min(100%, 580px);
+      gap: 12px;
+      width: fit-content;
+      max-width: 100%;
+      min-height: 72px;
       margin: 0 auto;
+      padding: 6px 12px;
+      font-size: 15px;
+      line-height: 1.8;
+      letter-spacing: 0.16em;
       text-align: center;
     }
 
-    .discover-button {
-      gap: 20px;
-      padding: 20px 24px;
-      border: 1px solid #a7ae9c;
-      border-radius: 3px;
-      background: #f5f2eacc;
-      font-size: 23px;
+    .scroll-guide:hover {
+      color: var(--muted);
     }
 
-    .discover-button span {
-      font-size: 28px;
-      animation: scroll-hint 1.6s ease-in-out infinite;
+    .scroll-guide-line {
+      position: relative;
+      width: 1px;
+      height: 32px;
+      overflow: hidden;
+      background: var(--line);
     }
 
-    .hero-shortcuts {
-      display: flex;
-      gap: 14px;
-      margin-top: 16px;
-    }
-
-    .hero-shortcuts a {
-      flex: 1;
-      padding: 17px 12px;
-      border: 1px solid var(--line);
-      background: var(--paper);
-      font-size: 17px;
+    .scroll-guide-line::after {
+      content: "";
+      position: absolute;
+      inset: -50% 0 auto;
+      height: 50%;
+      background: var(--ink);
+      animation: scroll-hint 2s ease-in-out infinite;
     }
 
     @keyframes scroll-hint {
-      50% {
-        transform: translateY(7px);
+      to {
+        transform: translateY(96px);
       }
     }
 
@@ -291,17 +291,18 @@ section: index
     }
 
     @media (max-width: 850px) {
-      .hero-shortcuts a {
-        font-size: 14px;
-      }
-
-      .contact-options {
+.contact-options {
         grid-template-columns: 1fr;
         margin: 60px 8%;
       }
     }
 
     @media (max-width: 700px) {
+      .scroll-guide {
+        font-size: 13px;
+        letter-spacing: 0.08em;
+      }
+
       /* スマホでも5人が入るように、写真の縦横比を固定 */
       .hero {
         justify-content: center;
@@ -319,16 +320,6 @@ section: index
 
       .hero-word {
         width: 36%;
-      }
-
-      .discover-button {
-        gap: 12px;
-        padding: 18px 12px;
-        font-size: 18px;
-      }
-
-      .hero-shortcuts a {
-        padding: 16px 6px;
       }
 
       .film-stage video {
@@ -366,8 +357,9 @@ section: index
         scroll-behavior: auto;
       }
 
-      .discover-button span {
+      .scroll-guide-line::after {
         animation: none;
+        inset: 0 0 auto;
       }
 
       .reveal {
@@ -486,17 +478,10 @@ section: index
         </h1>
       </div>
 
-      <div class="hero-actions">
-        <a class="discover-button" href="#concept">
-          スクロールして、ひぐらしを知る
-          <span aria-hidden="true">↓</span>
-        </a>
-
-        <div class="hero-shortcuts">
-          <a href="live.html">ライブ・取り置きへ ↗</a>
-          <a href="booking.html">出演のご依頼はこちら ↗</a>
-        </div>
-      </div>
+      <a class="scroll-guide" href="#concept">
+        <span>スクロールして、ひぐらしを知る</span>
+        <span class="scroll-guide-line" aria-hidden="true"></span>
+      </a>
     </section>
 
     <!-- 背景映像と手書き紹介 -->

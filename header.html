@@ -108,10 +108,7 @@
 
     <!-- ページ移動。今開いているページによって一部だけ変更 -->
     <nav class="main-nav" aria-label="メインメニュー">
-      {% if page.section == 'index' %}
-      <a class="optional" href="#concept">Concept</a>
-      <a class="optional" href="#sound">Live film</a>
-      {% else %}
+      {% if page.section != 'index' %}
       <a class="optional" href="index.html">トップへ</a>
       {% endif %}
       <a class="nav-action" href="live.html"{% if page.section == 'live' %} aria-current="page"{% endif %}>ライブ・取り置き</a>
