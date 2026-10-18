@@ -1,0 +1,4 @@
+# GitHub Pagesの共通パーツ機能を使うための設定
+theme: null
+exclude:
+  - README.md

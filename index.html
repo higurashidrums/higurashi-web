@@ -1,3 +1,7 @@
+---
+layout: null
+section: index
+---
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -5,49 +9,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>ひぐらし</title>
 
+  <link rel="stylesheet" href="shared-style.css">
+
   <style>
-    /* 基本設定 */
-    :root {
-      --paper: #f5f2ea;
-      --ink: #353c33;
-      --muted: #858879;
-      --line: #d6d8cb;
-      --font: "Yu Mincho", "Hiragino Mincho ProN", serif;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
     html {
       scroll-behavior: smooth;
-    }
-
-    body {
-      margin: 0;
-      background: var(--paper);
-      color: var(--ink);
-      font-family: var(--font);
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button {
-      font: inherit;
-      cursor: pointer;
-    }
-
-    a,
-    button {
-      outline-offset: 5px;
-    }
-
-    h1,
-    h2 {
-      font-weight: 400;
     }
 
     /* SVG画像ファイルの加工方法 */
@@ -58,108 +24,7 @@
       overflow: hidden;
     }
 
-    /* 配置 */
-    .nav-action,
-    .discover-button,
-    .hero-shortcuts a {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
 
-    .brand-handwriting,
-    .hero-handwriting,
-    .handwriting-line,
-    .custom-heading {
-      display: block;
-      width: 100%;
-      height: auto;
-      overflow: hidden;
-    }
-
-    /* 固定ヘッダー */
-    .site-header {
-      position: fixed;
-      inset: 0 0 auto;
-      z-index: 10;
-      display: grid;
-      grid-template-columns: max-content minmax(0, 1fr);
-      column-gap: 30px;
-      row-gap: 10px;
-      align-items: center;
-      padding: 18px 5%;
-      background: linear-gradient(var(--paper) 72%, transparent);
-    }
-
-    .brand {
-      grid-column: 1;
-      grid-row: 1 / 3;
-      display: block;
-      width: 125px;
-      line-height: 1;
-    }
-
-    /* 配信・SNS */
-    .header-social {
-      grid-column: 2;
-      grid-row: 1;
-      display: flex;
-      justify-content: flex-end;
-      gap: 16px;
-    }
-
-    .header-social a {
-      display: grid;
-      place-items: center;
-      width: 32px;
-      height: 32px;
-    }
-
-    .header-social svg {
-      width: 23px;
-      height: 23px;
-      fill: none;
-      stroke: currentColor;
-      stroke-width: 1.7;
-    }
-
-    .header-social .music-stream {
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      width: auto;
-      padding-right: 12px;
-      border-right: 1px solid #9ba28e80;
-    }
-
-    .music-stream span {
-      font-size: 14px;
-      white-space: nowrap;
-    }
-
-    /* ページ移動 */
-    .main-nav {
-      grid-column: 2;
-      grid-row: 2;
-      display: flex;
-      align-items: center;
-      justify-content: flex-end;
-      gap: 12px;
-      font-size: 16px;
-      letter-spacing: 0.08em;
-    }
-
-    .nav-action {
-      width: 220px;
-      min-height: 48px;
-      padding: 12px 16px;
-      border: 1px solid #a7ae9c;
-      border-radius: 3px;
-      background: var(--paper);
-      text-align: center;
-    }
-
-    /* 映像上のヘッダーを白にするためのコード */
     body.film-active .site-header {
       background: linear-gradient(#11131acc 72%, transparent);
       color: white;
@@ -197,8 +62,8 @@
       border: 1px solid #d7dacd;
       border-radius: 50%;
       box-shadow:
-        0 0 0 70px #e6e8dc38,
-        0 0 0 140px #e6e8dc22;
+      0 0 0 70px #e6e8dc38,
+      0 0 0 140px #e6e8dc22;
     }
 
     .hero-word {
@@ -299,7 +164,7 @@
         #0b0d14cc 10%,
         #0b0d1480 48%,
         #0b0d140d 85%
-      );
+        );
     }
 
     .film-copy {
@@ -383,22 +248,12 @@
       background: #e0e5d4;
     }
 
-    .eyebrow {
-      color: var(--muted);
-      font-size: 13px;
-      letter-spacing: 0.2em;
-    }
-
-    .lettering-title {
+    .contact-options .lettering-title {
       display: flex;
       align-items: center;
       min-height: 85px;
       margin: 25px 0 35px;
       line-height: 1;
-    }
-
-    .custom-heading {
-      max-width: 430px;
     }
 
     .action-description {
@@ -426,52 +281,7 @@
       font-size: 15px;
     }
 
-    /* タブレット・スマートフォン用 */
     @media (max-width: 850px) {
-      .site-header {
-        column-gap: 12px;
-        row-gap: 12px;
-        padding: 12px 5% 20px;
-      }
-
-      .brand {
-        grid-row: 1;
-        width: 105px;
-      }
-
-      .header-social {
-        gap: 8px;
-      }
-
-      .header-social a {
-        width: 28px;
-        height: 28px;
-      }
-
-      .header-social svg {
-        width: 21px;
-        height: 21px;
-      }
-
-      .main-nav {
-        grid-column: 1 / -1;
-        width: 100%;
-        gap: 10px;
-      }
-
-      .main-nav .optional {
-        display: none;
-      }
-
-      .nav-action {
-        flex: 1;
-        width: auto;
-        min-width: 0;
-        min-height: 46px;
-        padding: 12px 5px;
-        font-size: 14px;
-      }
-
       .hero-shortcuts a {
         font-size: 14px;
       }
@@ -521,8 +331,8 @@
 
       .film-shade {
         background:
-          linear-gradient(90deg, #11131a99, #11131a33),
-          linear-gradient(0deg, #11131a66, transparent);
+        linear-gradient(90deg, #11131a99, #11131a33),
+        linear-gradient(0deg, #11131a66, transparent);
       }
 
       .sentence-page {
@@ -534,38 +344,13 @@
         max-width: none;
       }
 
-      .lettering-title {
+      .contact-options .lettering-title {
         min-height: 65px;
       }
 
       footer {
         flex-direction: column;
         gap: 25px;
-      }
-    }
-
-    @media (max-width: 400px) {
-      .header-social {
-        gap: 5px;
-      }
-
-      .header-social a {
-        width: 25px;
-      }
-
-      .header-social .music-stream {
-        gap: 3px;
-        padding-right: 7px;
-      }
-
-      .music-stream span {
-        font-size: 12px;
-      }
-    }
-
-    @media (max-width: 360px) {
-      .brand {
-        width: 85px;
       }
     }
 
@@ -584,6 +369,10 @@
         transition: none;
       }
     }
+
+    .contact-options .custom-heading {
+      max-width: 430px;
+    }
   </style>
 </head>
 
@@ -596,26 +385,6 @@
     focusable="false"
   >
     <defs>
-      <!-- 名刺のロゴの抜き出し -->
-      <filter id="logo-ink" color-interpolation-filters="sRGB">
-        <feColorMatrix
-          type="matrix"
-          values="
-            0 0 0 0 .208
-            0 0 0 0 .235
-            0 0 0 0 .2
-            -.2126 -.7152 -.0722 0 .75
-          "
-        />
-        <feComponentTransfer>
-          <feFuncA type="linear" slope="10" intercept="-.2" />
-        </feComponentTransfer>
-      </filter>
-
-      <clipPath id="logo-clip" clipPathUnits="userSpaceOnUse">
-        <rect x="725" y="125" width="160" height="55" />
-      </clipPath>
-
       <!-- 手書きのやつを抜き出すコード -->
       <filter id="handwriting-ink" color-interpolation-filters="sRGB">
         <feGaussianBlur stdDeviation=".4" result="smooth" />
@@ -683,99 +452,7 @@
     </defs>
   </svg>
 
-  <header class="site-header">
-    <a class="brand" href="index.html" aria-label="ひぐらし トップへ">
-      <svg
-        class="brand-handwriting"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="725 125 160 55"
-        role="img"
-        aria-label="ひぐらし"
-      >
-        <image
-          href="assets/card-original.png"
-          width="1145"
-          height="1395"
-          clip-path="url(#logo-clip)"
-          filter="url(#logo-ink)"
-        />
-      </svg>
-    </a>
-
-    <div class="header-social" aria-label="SNS・配信">
-      <a
-        class="music-stream"
-        href="https://www.tunecore.co.jp/artists?id=1037446"
-        target="_blank"
-        rel="noopener"
-        aria-label="音源を聴く（TuneCore）"
-        title="音源を聴く"
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M9 17V5l11-2v12M9 9l11-2" />
-          <ellipse cx="5.5" cy="17" rx="3.5" ry="2.8" />
-          <ellipse cx="16.5" cy="15" rx="3.5" ry="2.8" />
-        </svg>
-        <span>音源</span>
-      </a>
-
-      <a
-        href="https://www.instagram.com/_sonohigurashii/"
-        target="_blank"
-        rel="noopener"
-        aria-label="Instagram"
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <rect x="3" y="3" width="18" height="18" rx="5" />
-          <circle cx="12" cy="12" r="4" />
-          <circle cx="17.5" cy="6.5" r=".7" fill="currentColor" />
-        </svg>
-      </a>
-
-      <a
-        href="https://x.com/_sonohigurashii"
-        target="_blank"
-        rel="noopener"
-        aria-label="X"
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M4 4l16 16M20 4L4 20" />
-        </svg>
-      </a>
-
-      <a
-        href="https://www.youtube.com/@sonohigurashii"
-        target="_blank"
-        rel="noopener"
-        aria-label="YouTube"
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <rect x="2" y="5" width="20" height="14" rx="4" />
-          <path d="M10 9l6 3-6 3z" fill="currentColor" stroke="none" />
-        </svg>
-      </a>
-
-      <a
-        href="https://www.tiktok.com/@_sonohigurashii"
-        target="_blank"
-        rel="noopener"
-        aria-label="TikTok"
-      >
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-          <path d="M14 3v12a4 4 0 1 1-4-4M14 3c0 4 3 6 6 6" />
-        </svg>
-      </a>
-    </div>
-
-    <nav class="main-nav" aria-label="メインメニュー">
-      <a class="optional" href="#concept">Concept</a>
-      <a class="optional" href="#sound">Live film</a>
-      <a class="nav-action" href="live.html">ライブ・取り置き</a>
-      <a class="nav-action" href="booking.html">
-        出演のご依頼はこちら
-      </a>
-    </nav>
-  </header>
+{% include header.html %}
 
   <main>
     <!-- 最初の画面 -->
@@ -788,13 +465,7 @@
           role="img"
           aria-label="ひぐらし"
         >
-          <image
-            href="assets/card-original.png"
-            width="1145"
-            height="1395"
-            clip-path="url(#logo-clip)"
-            filter="url(#logo-ink)"
-          />
+          <use href="#band-logo" />
         </svg>
       </h1>
 

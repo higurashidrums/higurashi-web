@@ -1,0 +1,226 @@
+/* 基本設定 */
+:root {
+  --paper: #f5f2ea;
+  --ink: #353c33;
+  --muted: #858879;
+  --line: #d6d8cb;
+  --font: "Yu Mincho", "Hiragino Mincho ProN", serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font);
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
+a,
+button {
+  outline-offset: 5px;
+}
+
+h1,
+h2 {
+  font-weight: 400;
+}
+
+.nav-action,
+.discover-button,
+.hero-shortcuts a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.nav-action {
+  width: 220px;
+  min-height: 48px;
+  padding: 12px 16px;
+  border: 1px solid #a7ae9c;
+  border-radius: 3px;
+  background: var(--paper);
+  text-align: center;
+}
+
+.brand-handwriting,
+.hero-handwriting,
+.handwriting-line,
+.custom-heading {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+}
+
+/* ヘッダー のフォントとか */
+.site-header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 10;
+  display: grid;
+  grid-template-columns: max-content minmax(0, 1fr);
+  column-gap: 30px;
+  row-gap: 10px;
+  align-items: center;
+  padding: 18px 5%;
+  background: linear-gradient(var(--paper) 72%, transparent);
+}
+
+.brand {
+  grid-column: 1;
+  grid-row: 1 / 3;
+  display: block;
+  width: 125px;
+  line-height: 1;
+}
+
+/* 配信・SNS */
+.header-social {
+  grid-column: 2;
+  grid-row: 1;
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.header-social a {
+  display: grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+}
+
+.header-social svg {
+  width: 23px;
+  height: 23px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+}
+
+.header-social .music-stream {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: auto;
+  padding-right: 12px;
+  border-right: 1px solid #9ba28e80;
+}
+
+.music-stream span {
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+/* ページ移動 */
+.main-nav {
+  grid-column: 2;
+  grid-row: 2;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 12px;
+  font-size: 16px;
+  letter-spacing: 0.08em;
+}
+
+.eyebrow {
+  color: var(--muted);
+  font-size: 13px;
+  letter-spacing: 0.2em;
+}
+
+/* 画面幅の調整してるとこ */
+@media (max-width: 850px) {
+  .site-header {
+    column-gap: 12px;
+    row-gap: 12px;
+    padding: 12px 5% 20px;
+  }
+
+  .brand {
+    grid-row: 1;
+    width: 105px;
+  }
+
+  .header-social {
+    gap: 8px;
+  }
+
+  .header-social a {
+    width: 28px;
+    height: 28px;
+  }
+
+  .header-social svg {
+    width: 21px;
+    height: 21px;
+  }
+
+  .main-nav {
+    grid-column: 1 / -1;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .main-nav .optional {
+    display: none;
+  }
+
+  .nav-action {
+    flex: 1;
+    width: auto;
+    min-width: 0;
+    min-height: 46px;
+    padding: 12px 5px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 400px) {
+  .header-social {
+    gap: 5px;
+  }
+
+  .header-social a {
+    width: 25px;
+  }
+
+  .header-social .music-stream {
+    gap: 3px;
+    padding-right: 7px;
+  }
+
+  .music-stream span {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 360px) {
+  .brand {
+    width: 85px;
+  }
+}
+
+/* 入力欄も本文と同じ書体にする */
+input, textarea {
+  font: inherit;
+  outline-offset: 5px;
+}
+.custom-heading {
+  max-width: 520px;
+}
