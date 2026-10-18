@@ -40,46 +40,55 @@ section: index
       filter: brightness(0) invert(1);
     }
 
-    /* 最初の画面 */
+    /* 最初の画面：アー写に手書きのロゴを重ねる */
     .hero {
-      position: relative;
-      display: grid;
-      place-items: center;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
       height: 100svh;
-      min-height: 660px;
-      overflow: hidden;
+      min-height: 760px;
+      padding: 140px 3% 28px;
     }
 
-    .hero::before {
+    .hero-visual {
+      position: relative;
+      flex: 1;
+      min-height: 300px;
+      overflow: hidden;
+      background: #e6e8dc;
+    }
+
+    .hero-photo {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 60%;
+    }
+
+    .hero-visual::after {
       content: "";
       position: absolute;
-      top: 18%;
-      right: -24%;
-      width: 56vw;
-      height: 56vw;
-      max-width: 750px;
-      max-height: 750px;
-      border: 1px solid #d7dacd;
-      border-radius: 50%;
-      box-shadow:
-      0 0 0 70px #e6e8dc38,
-      0 0 0 140px #e6e8dc22;
+      inset: 0;
+      background: #f5f2ea0d;
+      pointer-events: none;
     }
 
     .hero-word {
-      position: relative;
-      width: min(64vw, 620px);
+      position: absolute;
+      top: 12%;
+      left: 50%;
+      z-index: 1;
+      width: min(32%, 360px);
       margin: 0;
-      transform: translateY(-60px);
+      transform: translateX(-50%);
       line-height: 1;
     }
 
     .hero-actions {
-      position: absolute;
-      bottom: 40px;
-      left: 50%;
-      width: min(90%, 580px);
-      transform: translateX(-50%);
+      flex-shrink: 0;
+      width: min(100%, 580px);
+      margin: 0 auto;
       text-align: center;
     }
 
@@ -293,25 +302,23 @@ section: index
     }
 
     @media (max-width: 700px) {
+      /* スマホでも5人が入るように、写真の縦横比を固定 */
       .hero {
-        min-height: 630px;
+        justify-content: center;
+        gap: 24px;
+        height: auto;
+        min-height: 100svh;
+        padding: 140px 4% 32px;
       }
 
-      .hero::before {
-        top: 30%;
-        right: -55%;
-        width: 100vw;
-        height: 100vw;
+      .hero-visual {
+        flex: none;
+        min-height: 0;
+        aspect-ratio: 3 / 2;
       }
 
       .hero-word {
-        width: 78vw;
-        max-width: 440px;
-        transform: translateY(-70px);
-      }
-
-      .hero-actions {
-        bottom: 30px;
+        width: 36%;
       }
 
       .discover-button {
@@ -457,17 +464,27 @@ section: index
   <main>
     <!-- 最初の画面 -->
     <section class="hero">
-      <h1 class="hero-word">
-        <svg
-          class="hero-handwriting"
-          xmlns="http://www.w3.org/2000/svg"
-          viewBox="725 125 160 55"
-          role="img"
-          aria-label="ひぐらし"
+      <div class="hero-visual">
+        <img
+          class="hero-photo"
+          src="assets/band.png"
+          alt="夕暮れの海辺に立つ、ひぐらしのメンバー5人"
+          width="1567"
+          height="1045"
+          fetchpriority="high"
         >
-          <use href="#band-logo" />
-        </svg>
-      </h1>
+        <h1 class="hero-word">
+          <svg
+            class="hero-handwriting"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="725 125 160 55"
+            role="img"
+            aria-label="ひぐらし"
+          >
+            <use href="#band-logo" />
+          </svg>
+        </h1>
+      </div>
 
       <div class="hero-actions">
         <a class="discover-button" href="#concept">
