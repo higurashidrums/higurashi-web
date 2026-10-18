@@ -4,6 +4,8 @@
   --ink: #353c33;
   --muted: #858879;
   --line: #d6d8cb;
+  --heading-size: clamp(28px, 3vw, 36px);
+  --subheading-size: clamp(22px, 2vw, 26px);
   --font: "Yu Mincho", "Hiragino Mincho ProN", serif;
 }
 
@@ -34,7 +36,8 @@ button {
 }
 
 h1,
-h2 {
+h2,
+h3 {
   font-weight: 400;
 }
 
@@ -54,9 +57,7 @@ h2 {
 }
 
 .brand-handwriting,
-.hero-handwriting,
-.handwriting-line,
-.custom-heading {
+.handwriting-line {
   display: block;
   width: 100%;
   height: auto;
@@ -135,11 +136,6 @@ h2 {
   letter-spacing: 0.08em;
 }
 
-.eyebrow {
-  color: var(--muted);
-  font-size: 13px;
-  letter-spacing: 0.2em;
-}
 
 /* 画面幅の調整してるとこ */
 @media (max-width: 850px) {
@@ -217,6 +213,44 @@ input, textarea {
   font: inherit;
   outline-offset: 5px;
 }
-.custom-heading {
-  max-width: 520px;
+
+/* 見出しの書体と大きさは、全ページここでそろえる */
+.page-title, .section-heading,
+.card-heading, .track-title, .event-title {
+  font-family: var(--font);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: 0.08em;
+}
+
+.page-title, .section-heading {
+  font-size: var(--heading-size);
+}
+
+.page-title {
+  margin: 24px 0 32px;
+}
+
+.section-heading {
+  margin: 16px 0 40px;
+}
+
+.card-heading, .track-title, .event-title {
+  font-size: var(--subheading-size);
+}
+
+.card-heading {
+  margin: 24px 0;
+}
+
+/* 見た目には重ねず、読み上げ用のページ見出しは残す */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
 }

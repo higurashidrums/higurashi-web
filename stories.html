@@ -1,0 +1,174 @@
+---
+layout: null
+section: stories
+---
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>楽曲の物語｜ひぐらし</title>
+  <link rel="stylesheet" href="shared-style.css">
+  <style>
+    /* 余白と行間を広くして、物語を読むページ */
+    .story-page {
+      max-width: 800px;
+      margin: auto;
+      padding: 160px 6% 80px;
+    }
+
+    .story-intro {
+      margin-bottom: 24px;
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--line);
+    }
+
+
+    .story-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 24px;
+      padding: 0;
+    }
+
+    .story-nav a, .back-link {
+      padding: 8px 0;
+      text-decoration: underline;
+      text-decoration-color: var(--line);
+      text-underline-offset: 6px;
+    }
+
+    /* URLで選んだ物語だけ表示する。JavaScriptは不要 */
+    .story {
+      display: none;
+      padding-top: 32px;
+      scroll-margin-top: 100svh;
+    }
+
+    .story:target {
+      display: block;
+    }
+
+    .story p {
+      margin: 0 0 1.8em;
+      font-size: 17px;
+      line-height: 2.3;
+      letter-spacing: 0.04em;
+      overflow-wrap: anywhere;
+    }
+
+    /* 読み終えた後に音楽へ進む */
+    .story-listen {
+      display: inline-flex;
+      align-items: center;
+      gap: 24px;
+      min-height: 48px;
+      margin: 0 24px 32px 0;
+      padding: 12px 20px;
+      border: 1px solid var(--ink);
+      font-size: 17px;
+    }
+
+    .story-listen:hover {
+      background: #e9ecdf;
+    }
+
+    .back-link {
+      display: inline-block;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 700px) {
+
+      .story-page {
+        padding-top: 140px;
+      }
+
+      .story p {
+        font-size: 16px;
+        line-height: 2.2;
+      }
+    }
+  </style>
+</head>
+<body>
+{% include_relative header.html %}
+  <main class="story-page">
+    <!-- 読む物語を選ぶ入口 -->
+    <div class="story-intro">
+      <div>
+        <h1 class="page-title">楽曲の物語</h1>
+        <nav class="story-nav" aria-label="読む物語を選ぶ">
+            <a href="#gekkabijin">月下美人</a>
+            <a href="#jugoyaso">十五夜草</a>
+            <a href="#higanbana">彼岸花</a>
+            <a href="#matsuyukiso">待雪草</a>
+        </nav>
+      </div>
+    </div>
+
+      <!-- 月下美人の物語。文章はここで変更 -->
+      <article class="story" id="gekkabijin" aria-labelledby="title-gekkabijin">
+        <h2 class="section-heading" id="title-gekkabijin">月下美人</h2>
+        <p>夏の夜に線路沿いの道を歩いている。近くに見える踏切を渡った先には海がある。人気のない駅の改札を通り、生温かい潮風に当たりながらホームのベンチに座る。</p>
+        <p>もう終電はとっくに過ぎたはずなのに遠くから列車の音がする。おもむろに立ち上がり、吸いこまれるように誰も乗っていない電車に乗る。淡い月明かりが静かな海辺の街を照らすのが窓から見える。</p>
+        <p>突然、体がふわっと浮き上がる感覚に襲われる。気づけば窓の外には何もなかった。下を見下ろすと、点々と灯る街の光が見える。</p>
+        <p>月がいつになく大きく見える。空を飛んでいた。驚きと怖さを覚えつつも、田舎を出たことがなかった私は味わったことのない新鮮な感覚に興奮する。</p>
+        <p>どこまでも広がる夜空に悲しみ、怒り、憂鬱、全ての負の感情が浄化されていく。列車は止まることなく空を登っていく。どこまでも行けるような気がした。</p>
+        <p>ふと、車内が明るく照らされる。見上げると月が目の前に見えた。あまりの眩しさに目を瞑る。</p>
+        <p>同時に体が急に重たくなるのを感じる。目を開けるとそこは見慣れた駅のホームだった。海の先に見える水平線に日が登る。</p>
+        <p>全て夢だったことに気づいて少し残念な気持ちになる。もっと見ていたかった。重い体を起こして背伸びをする。</p>
+        <p>またつまらない一日が始まる。</p>
+        <a class="story-listen" href="https://linkco.re/dVzUmnzY" target="_blank" rel="noopener">この曲を聴く <span aria-hidden="true">↗</span></a>
+        <a class="back-link" href="index.html#releases">作品の一覧に戻る</a>
+      </article>
+
+      <!-- 十五夜草の物語。文章はここで変更 -->
+      <article class="story" id="jugoyaso" aria-labelledby="title-jugoyaso">
+        <h2 class="section-heading" id="title-jugoyaso">十五夜草</h2>
+        <p>夏の暑さも落ち着き、過ごしやすい季節になってきた。最近は、引っ越してきた家の縁側に座りながら、スズムシの鳴き声を聞くことが毎日の楽しみになっている。それでも一人で暮らすのは少し寂しい気もする。</p>
+        <p>やたら広く感じるリビングには観葉植物、知らない画家の絵画など、インテリアと呼べるあらゆるものを置いてみたが、それでも何かが足りない気がする。無表情な音を奏でるアラームで始まる一日には嫌気が刺すことも増えてきた。そういうときは出かけることにしている。</p>
+        <p>あなたがまだ生きていた頃二人で住んでいた街に。以前は毎日のように乗っていた電車は、錆かかった古っぽい車両から、現代的で綺麗なものに変わっていた。前の方が雰囲気があって良かったのにな、と思いつつ、その電車に乗って静かな住宅街を抜け、小さな山の麓の駅で降りる。</p>
+        <p>暖かい夕日と、優しいセミの鳴き声に囲まれながら30分ほど山を登ると、見覚えのある墓地が見えてきた。自分の苗字が刻まれている墓石に向かい、買ってきた紫苑の花を供える。そうだ。</p>
+        <p>今日は、あなたが手紙に残した詩を歌にしたからそれを聞かせてあげよう。売れたわけではないけれど。持ってきたギターケースからギターを取り出し、歌い始める。</p>
+        <p>思えばこうしてあなたに歌を聞かせるのもこれが初めてかもしれない。生きている間に聞かせてあげたかったと今更ながら後悔する。帰り道、空を見上げると満月がいつになく綺麗だった。</p>
+        <p>そうか、今日は十五夜か。</p>
+        <a class="story-listen" href="https://linkco.re/22QHS04C" target="_blank" rel="noopener">この曲を聴く <span aria-hidden="true">↗</span></a>
+        <a class="back-link" href="index.html#releases">作品の一覧に戻る</a>
+      </article>
+
+      <!-- 彼岸花の物語。文章はここで変更 -->
+      <article class="story" id="higanbana" aria-labelledby="title-higanbana">
+        <h2 class="section-heading" id="title-higanbana">彼岸花</h2>
+        <p>死は唐突にやってくる。だから人間は形のある創作物を世に残すんだ。あなたが偉そうにそう言っていたのを思い出して手紙を書こうと思った。</p>
+        <p>私はもうすぐ死ぬ。遺書と呼べるような内容ではないと思ったからあくまでも手紙ということにしておこうと思った。結局最後まであなたのことがほとんど分からないままだった。</p>
+        <p>私が死ぬことを知った時もそこまで悲しそうにはしてなかった。私が気づいていないだけで、あなたの中では本当に悲しんでいたのかもしれない。少なくともそういうことにしておきたい。</p>
+        <p>あなたについて唯一分かったことがあるとすれば音楽を愛しているということだった。きっと私がいなくなるよりも音楽がこの世から消えることの方があなたにとってはよっぽど大事なことなんだろう。だから手紙には詩を残そうと思った。</p>
+        <p>もしあなたが私の書いた詩に音楽をつけ、その曲が世に出て多くの人に聞いてもらえるなら、あなたは私の死を少しは悲しんでくれるのかもしれない。そもそもあなたがこの手紙を読んでくれるのかは分からないけれど。こんなことを考えてるうちに一日の終わりが近づいている。</p>
+        <p>私はペンを手に取る。優しい太陽の光が部屋の窓から刺している。もうじき夏も終わる。</p>
+        <a class="story-listen" href="https://linkco.re/UgNGBcdy" target="_blank" rel="noopener">この曲を聴く <span aria-hidden="true">↗</span></a>
+        <a class="back-link" href="index.html#releases">作品の一覧に戻る</a>
+      </article>
+
+      <!-- 待雪草の物語。文章はここで変更 -->
+      <article class="story" id="matsuyukiso" aria-labelledby="title-matsuyukiso">
+        <h2 class="section-heading" id="title-matsuyukiso">待雪草</h2>
+        <p>寒い冬の夜だった。視界が悪くなるくらいの雪が降っていた。街を歩くのは私一人だった。</p>
+        <p>寒い。指の感覚がなくなっていく。とても寒い。</p>
+        <p>ふと路肩に目をやると一輪の花が咲いていた。花屋を営んでいた私はすぐにその花の名前が分かった。「待雪草。</p>
+        <p>」花言葉は「希望。」皮肉なものだ。こんな絶望の淵にいる私が最後に見る花が「希望」だなんて。</p>
+        <p>寒さのあまり両手をズボンのポケットに入れる。何か箱状の物の感触がする。マッチ箱だ。</p>
+        <p>私が幼い頃、よく母親が読み聞かせてくれていた童話を思い出す。「マッチ棒売りの少女。」同じような冬の夜、マッチが一本も売れずに凍えていた少女の話だった。</p>
+        <p>彼女がマッチを擦ると、大好きだった祖母の姿が炎に浮かび上がる。それが消えないように少女はマッチを擦り続ける。やがて少女は祖母に連れられ天へと昇っていく。</p>
+        <p>そんな話だった。私は目の前の花を燃やしたいという強い衝動に駆られる。箱からマッチを一本取り出して擦る。</p>
+        <p>そして炎を一輪の待雪草に移す。さあ燃えろ。燃えるんだ。</p>
+        <p>真っ白な雪景色の中真っ赤な炎があたりを照らす。童話の少女と同じように炎を覗き込むと、そこには桜並木が映っていた。一人で並木道を歩く男性の後ろ姿が見える。</p>
+        <p>私は食い入るように彼を見つめる。ひどく見覚えのある背中だった。ふと待雪草に別の花言葉があったことを思い出す。</p>
+        <p>ほとんど真反対の意味だった。ああそうか。皮肉なんかじゃなかった。</p>
+        <p>これはきっとあなたからのプレゼントなんだ。あたり一面の雪が溶け、所々に緑色の芽が顔を出している。私は微笑みながら目を閉じる。</p>
+        <a class="story-listen" href="https://linkco.re/cx1mTtfR" target="_blank" rel="noopener">この曲を聴く <span aria-hidden="true">↗</span></a>
+        <a class="back-link" href="index.html#releases">作品の一覧に戻る</a>
+      </article>
+  </main>
+</body>
+</html>

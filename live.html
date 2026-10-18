@@ -19,16 +19,33 @@ section: live
       padding: 170px 7% 100px;
     }
 
-    .schedule .lettering-title {
-      min-height: 65px;
-      margin: 35px 0;
-      line-height: 1;
+    .schedule-heading {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 240px;
+      align-items: center;
+      gap: 32px;
+      margin-bottom: 40px;
     }
 
     .schedule-intro {
-      margin-bottom: 60px;
+      margin: 0;
       font-size: 22px;
       line-height: 1.8;
+    }
+
+    .event-title {
+      margin: 18px 0;
+    }
+
+    /* 見出しと説明文の横に、小さく写真を添える */
+    .schedule-photo {
+      margin: 0;
+    }
+
+    .schedule-photo img {
+      display: block;
+      width: 100%;
+      height: auto;
     }
 
     /* 各ライブの情報 */
@@ -55,20 +72,33 @@ section: live
       font-size: 36px;
     }
 
-    .event-info h2 {
-      margin: 18px 0;
-      font-size: 36px;
-      line-height: 1.5;
-      letter-spacing: 0.1em;
+
+    /* 時間と料金は、公演ごとにここで案内 */
+    .event-details {
+      display: grid;
+      gap: 16px;
+      margin: 24px 0 32px;
     }
 
-    .event-note {
+    .event-details > div {
+      display: grid;
+      grid-template-columns: 100px minmax(0, 1fr);
+      gap: 20px;
+    }
+
+    .event-details dt {
       color: var(--muted);
-      font-size: 16px;
-      line-height: 1.9;
+      font-size: 15px;
+      line-height: 1.8;
     }
 
-    /* 取り置きメールを開くボタン */
+    .event-details dd {
+      margin: 0;
+      font-size: 19px;
+      line-height: 1.8;
+    }
+
+    /* 各公演のチケットサイト・予約フォームへ進むボタン */
     .reserve-link {
       display: block;
       width: 100%;
@@ -87,12 +117,20 @@ section: live
     }
 
     @media (max-width: 700px) {
-      .schedule .lettering-title {
-        min-height: 50px;
+      .schedule-heading {
+        grid-template-columns: minmax(0, 1fr) 110px;
+        gap: 16px;
+        margin-bottom: 32px;
       }
 
+      .schedule-heading .page-title {
+        margin: 0 0 12px;
+        font-size: 24px;
+      }
+
+
       .schedule-intro {
-        font-size: 20px;
+        font-size: 15px;
       }
 
       .event {
@@ -107,8 +145,13 @@ section: live
         font-size: 30px;
       }
 
-      .event-info h2 {
-        font-size: 30px;
+      .event-details > div {
+        grid-template-columns: 88px minmax(0, 1fr);
+        gap: 12px;
+      }
+
+      .event-details dd {
+        font-size: 18px;
       }
 
       .reserve-link {
@@ -122,85 +165,61 @@ section: live
 {% include_relative header.html %}
 
   <main class="schedule">
-    <span class="eyebrow">LIVE SCHEDULE</span>
 
-    <h1 class="lettering-title">
-      <svg
-        class="custom-heading"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="60 365 1990 350"
-        role="img"
-        aria-label="ライブ・取り置き"
-      >
-        <image
-          href="assets/custom-headings.png"
-          width="2172"
-          height="724"
-        />
-      </svg>
-    </h1>
+    <div class="schedule-heading">
+      <div>
+        <h1 class="page-title">ライブ・取り置き</h1>
+        <p class="schedule-intro">ライブ予定・チケットのお取り置き</p>
+      </div>
+      <figure class="schedule-photo">
+        <img src="assets/band-forest.png" alt="松の木のそばに集まる、ひぐらしのメンバーたち" width="1543" height="1061" decoding="async">
+      </figure>
+    </div>
 
-    <p class="schedule-intro">
-      ライブ予定・チケットのお取り置き
-    </p>
-
-    <!-- 10月24日のライブ -->
+    <div id="live-events">
     <article class="event">
       <time class="event-date" datetime="2026-10-24">
         2026
         <span>10 / 24</span>
       </time>
-
       <div class="event-info">
-        <span class="eyebrow">LIVE</span>
-        <h2>下北沢WAVER</h2>
-
-        <p class="event-note">
-          開場・開演時間、料金は決まり次第お知らせします。
-        </p>
-
-        <a
-          class="reserve-link"
-          href="mailto:sonohigurashi45@gmail.com?subject=ライブ取り置き希望（10月24日%20下北沢WAVER）&amp;body=お名前：%0A枚数：%0A%0A10月24日のライブの取り置きを希望します。"
-        >
-          このライブを取り置きする ↗
-        </a>
-
-        <p class="event-note">
-          メールでお名前・希望枚数をお送りください。<br>
-          バンドからの返信をもって受付完了となります。
-        </p>
+        <h2 class="event-title">下北沢WAVER</h2>
+        <dl class="event-details">
+          <div>
+            <dt>開場 / 開演</dt>
+            <dd><time datetime="2026-10-24T13:10:00+09:00">13:10</time> / <time datetime="2026-10-24T13:40:00+09:00">13:40</time></dd>
+          </div>
+          <div>
+            <dt>チケット</dt>
+            <dd>前売り 3,400円<br>U-22 2,900円</dd>
+          </div>
+        </dl>
+        <a class="reserve-link" href="https://tiget.net/events/516439" target="_blank" rel="noopener">TIGETでチケットを申し込む ↗</a>
       </div>
     </article>
 
-    <!-- 11月4日のライブ -->
     <article class="event">
       <time class="event-date" datetime="2026-11-04">
         2026
         <span>11 / 4</span>
       </time>
-
       <div class="event-info">
-        <span class="eyebrow">LIVE</span>
-        <h2>赤坂navey floor</h2>
-
-        <p class="event-note">
-          開場・開演時間、料金は決まり次第お知らせします。
-        </p>
-
-        <a
-          class="reserve-link"
-          href="mailto:sonohigurashi45@gmail.com?subject=ライブ取り置き希望（11月4日%20赤坂navey%20floor）&amp;body=お名前：%0A枚数：%0A%0A11月4日のライブの取り置きを希望します。"
-        >
-          このライブを取り置きする ↗
-        </a>
-
-        <p class="event-note">
-          メールでお名前・希望枚数をお送りください。<br>
-          バンドからの返信をもって受付完了となります。
-        </p>
+        <h2 class="event-title">赤坂navey floor</h2>
+        <dl class="event-details">
+          <div>
+            <dt>開場 / 開演</dt>
+            <dd><time datetime="2026-11-04T18:00:00+09:00">18:00</time> / <time datetime="2026-11-04T18:30:00+09:00">18:30</time></dd>
+          </div>
+          <div>
+            <dt>チケット</dt>
+            <dd>前売り 3,000円<br>U-22 2,500円</dd>
+          </div>
+        </dl>
+        <a class="reserve-link" href="https://forms.gle/WrpcZ9eZFFw3Rq5P7" target="_blank" rel="noopener">予約フォームを開く ↗</a>
       </div>
     </article>
+    </div>
   </main>
+  <script src="live-settings.js" defer></script>
 </body>
 </html>

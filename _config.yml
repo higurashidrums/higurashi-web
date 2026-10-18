@@ -1,4 +1,4 @@
-# GitHub Pagesの共通パーツ機能を使うための設定
+# 公開設定用です。普段は触らなくてOK！
 theme: null
 exclude:
   - README.md

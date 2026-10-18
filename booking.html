@@ -29,12 +29,6 @@ section: booking
       gap: 12%;
     }
 
-    .booking-title {
-      min-height: 65px;
-      margin: 25px 0 35px;
-      line-height: 1;
-    }
-
     .description {
       font-size: 19px;
       line-height: 2.5;
@@ -135,13 +129,16 @@ section: booking
         gap: 40px;
       }
 
-      .booking-title {
-        min-height: 50px;
-      }
-
       .booking-form {
         gap: 22px 16px;
       }
+    }
+    /* 相談する前に、メンバーの雰囲気も伝える */
+    .booking-photo {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-top: 32px;
     }
   </style>
 </head>
@@ -153,29 +150,16 @@ section: booking
     <section class="booking" aria-labelledby="booking-title">
       <div class="booking-layout">
         <div>
-          <span class="eyebrow">04 / BOOKING</span>
 
-          <h1 class="booking-title" id="booking-title">
-            <svg
-              class="custom-heading"
-              xmlns="http://www.w3.org/2000/svg"
-              viewBox="220 0 1700 350"
-              role="img"
-              aria-label="出演のご依頼"
-            >
-              <image
-                href="assets/custom-headings.png"
-                width="2172"
-                height="724"
-              />
-            </svg>
-          </h1>
+          <h1 class="page-title" id="booking-title">出演のご依頼</h1>
 
           <p class="description">
             ライブへのお誘いはこちらから。<br>
             日程や詳細がまだ決まっていなくても、<br>
             まずはお気軽にご相談いただければ幸いです。
           </p>
+
+          <img class="booking-photo" src="assets/band-peace.png" alt="笑顔でピースをする、ひぐらしのメンバー5人" width="1567" height="1045" decoding="async">
         </div>
 
         <form class="booking-form" id="booking-form">
