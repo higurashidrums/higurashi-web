@@ -34,6 +34,12 @@ section: index
       filter: brightness(0) invert(1);
     }
 
+    /* 最初は写真上のロゴだけ。画面から外れたら左上にも表示 */
+    body:not(.header-logo-visible) .site-header .brand {
+      visibility: hidden;
+      pointer-events: none;
+    }
+
     /* 最初の画面：アー写に手書きのロゴを重ねる */
     .hero {
       display: flex;
@@ -373,6 +379,15 @@ section: index
       max-width: 430px;
     }
   </style>
+  <noscript>
+    <style>
+      /* JavaScriptを使わない場合も、トップへのリンクは残す */
+      body:not(.header-logo-visible) .site-header .brand {
+        visibility: visible;
+        pointer-events: auto;
+      }
+    </style>
+  </noscript>
 </head>
 
 <body>
@@ -680,6 +695,7 @@ section: index
     "use strict";
 
     const film = document.querySelector(".film-story");
+    const heroLogo = document.querySelector(".hero-word");
     const video = document.getElementById("liveVideo");
     const soundButton = document.getElementById("soundToggle");
     const revealElements = document.querySelectorAll(".reveal");
@@ -757,6 +773,11 @@ section: index
     /* 背景に合わせてヘッダーの配色を変更 */
     function updateHeaderColor() {
       const bounds = film.getBoundingClientRect();
+
+      document.body.classList.toggle(
+        "header-logo-visible",
+        heroLogo.getBoundingClientRect().bottom <= 0
+      );
 
       document.body.classList.toggle(
         "film-active",
