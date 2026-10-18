@@ -2,3 +2,4 @@
 theme: null
 exclude:
   - README.md
+  - header.html

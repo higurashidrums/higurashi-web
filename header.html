@@ -1,0 +1,120 @@
+<!-- 全ページ共通。ロゴ・SNSのリンクはこのファイルだけ変更する -->
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="ひぐらし トップへ">
+      <svg
+        class="brand-handwriting"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="725 125 160 55"
+        role="img"
+        aria-label="ひぐらし"
+      >
+        <defs>
+          <!-- 名刺のロゴの抜き出し。中央のロゴもこの画像を使う -->
+          <filter id="logo-ink" color-interpolation-filters="sRGB">
+            <feColorMatrix
+              type="matrix"
+              values="
+                0 0 0 0 .208
+                0 0 0 0 .235
+                0 0 0 0 .2
+                -.2126 -.7152 -.0722 0 .75
+              "
+            />
+            <feComponentTransfer>
+              <feFuncA type="linear" slope="10" intercept="-.2" />
+            </feComponentTransfer>
+          </filter>
+          <clipPath id="logo-clip" clipPathUnits="userSpaceOnUse">
+            <rect x="725" y="125" width="160" height="55" />
+          </clipPath>
+          <g id="band-logo">
+            <image
+              href="assets/card-original.png"
+              width="1145"
+              height="1395"
+              clip-path="url(#logo-clip)"
+              filter="url(#logo-ink)"
+            />
+          </g>
+        </defs>
+        <use href="#band-logo" />
+      </svg>
+    </a>
+
+    <div class="header-social" aria-label="SNS・配信">
+      <a
+        class="music-stream"
+        href="https://www.tunecore.co.jp/artists?id=1037446"
+        target="_blank"
+        rel="noopener"
+        aria-label="音源を聴く（TuneCore）"
+        title="音源を聴く"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M9 17V5l11-2v12M9 9l11-2" />
+          <ellipse cx="5.5" cy="17" rx="3.5" ry="2.8" />
+          <ellipse cx="16.5" cy="15" rx="3.5" ry="2.8" />
+        </svg>
+        <span>音源</span>
+      </a>
+
+      <a
+        href="https://www.instagram.com/_sonohigurashii/"
+        target="_blank"
+        rel="noopener"
+        aria-label="Instagram"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="3" y="3" width="18" height="18" rx="5" />
+          <circle cx="12" cy="12" r="4" />
+          <circle cx="17.5" cy="6.5" r=".7" fill="currentColor" />
+        </svg>
+      </a>
+
+      <a
+        href="https://x.com/_sonohigurashii"
+        target="_blank"
+        rel="noopener"
+        aria-label="X"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 4l16 16M20 4L4 20" />
+        </svg>
+      </a>
+
+      <a
+        href="https://www.youtube.com/@sonohigurashii"
+        target="_blank"
+        rel="noopener"
+        aria-label="YouTube"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <rect x="2" y="5" width="20" height="14" rx="4" />
+          <path d="M10 9l6 3-6 3z" fill="currentColor" stroke="none" />
+        </svg>
+      </a>
+
+      <a
+        href="https://www.tiktok.com/@_sonohigurashii"
+        target="_blank"
+        rel="noopener"
+        aria-label="TikTok"
+      >
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M14 3v12a4 4 0 1 1-4-4M14 3c0 4 3 6 6 6" />
+        </svg>
+      </a>
+    </div>
+
+    <!-- ページ移動。今開いているページによって一部だけ変更 -->
+    <nav class="main-nav" aria-label="メインメニュー">
+      {% if page.section == 'index' %}
+      <a class="optional" href="#concept">Concept</a>
+      <a class="optional" href="#sound">Live film</a>
+      {% else %}
+      <a class="optional" href="index.html">トップへ</a>
+      {% endif %}
+      <a class="nav-action" href="live.html"{% if page.section == 'live' %} aria-current="page"{% endif %}>ライブ・取り置き</a>
+      <a class="nav-action" href="booking.html"{% if page.section == 'booking' %} aria-current="page"{% endif %}>出演のご依頼はこちら</a>
+    </nav>
+  </header>
