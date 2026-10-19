@@ -38,14 +38,15 @@ section: stories
       text-underline-offset: 6px;
     }
 
-    /* URLで選んだ物語だけ表示する。JavaScriptは不要 */
+    /* URLの # と article の id が一致する物語を表示。指定がなければ月下美人 */
     .story {
       display: none;
       padding-top: 32px;
       scroll-margin-top: 100svh;
     }
 
-    .story:target {
+    .story:target,
+    .story-page:not(:has(.story:target)) #gekkabijin {
       display: block;
     }
 
@@ -107,6 +108,8 @@ section: stories
       </div>
     </div>
 
+      <!-- 物語を追加するとき：article を丸ごとコピーし、id・見出しの id・aria-labelledby を重複しない名前にする。
+           上のナビにも同じ #id のリンクを追加し、末尾の配信URLを変更する。 -->
       <!-- 月下美人の物語。文章はここで変更 -->
       <article class="story" id="gekkabijin" aria-labelledby="title-gekkabijin">
         <h2 class="section-heading" id="title-gekkabijin">月下美人</h2>

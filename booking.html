@@ -42,11 +42,12 @@ section: booking
     }
 
     .booking-form {
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
       gap: 24px 20px;
     }
 
     .field {
+      min-width: 0;
       gap: 10px;
       font-size: 17px;
     }
@@ -130,6 +131,7 @@ section: booking
       }
 
       .booking-form {
+        grid-template-columns: minmax(0, 1fr);
         gap: 22px 16px;
       }
     }
@@ -248,22 +250,20 @@ section: booking
       const date = readField("date");
       const message = readField("message");
 
+      // 入力された情報だけを載せる。すべて空欄でも依頼文を作れる。
+      const sender = [venue, person ? `${person}と申します。` : ""]
+        .filter(Boolean).join("\n");
+
       return {
         subject: `【出演のご相談】${venue || "ライブのお誘い"}`,
         body: [
           "ひぐらし ご担当者様",
-          "",
-          venue || "主催者名：",
-          person ? `${person}と申します。` : "担当者名：",
-          "",
+          sender,
           "ライブへのご出演についてご相談したく、ご連絡しました。",
-          "",
-          `出演希望日：${date || "未定・ご相談"}`,
-          "内容・条件：",
-          message || "詳細をご相談させていただけますと幸いです。",
-          "",
+          date ? `出演希望日：${date}` : "",
+          message ? `内容・条件：\n${message}` : "詳細をご相談させていただけますと幸いです。",
           "ご検討のほど、よろしくお願いいたします。"
-        ].join("\n")
+        ].filter(Boolean).join("\n\n")
       };
     }
 

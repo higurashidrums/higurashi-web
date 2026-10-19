@@ -707,6 +707,8 @@ section: index
       <h2 class="section-heading" id="release-heading">作品</h2>
 
       <div class="release-list">
+        <!-- 曲を追加するとき：release-card の article を丸ごとコピーし、曲名・日付（datetime も）・
+             ジャケット画像・配信URLを書き換える。物語がある曲だけ story-link を付ける。 -->
         <article class="release-card">
           <a class="release-art" href="https://linkco.re/bm8bBHnX" target="_blank" rel="noopener" aria-label="灯りを配信サービスで聴く（別タブで開く）">
             <img class="release-cover" src="assets/release-akari.png" alt="灯りのジャケット" width="800" height="800" loading="lazy" decoding="async">
@@ -823,8 +825,6 @@ section: index
       "(prefers-reduced-motion: reduce)"
     ).matches;
 
-    let videoLoaded = false;
-
     /* 紹介文を画面に入ったとき一度だけ表示 */
     if ("IntersectionObserver" in window) {
       const revealObserver = new IntersectionObserver(
@@ -850,11 +850,7 @@ section: index
           return;
         }
 
-        if (!videoLoaded) {
-          video.load();
-          videoLoaded = true;
-        }
-
+        // play() が必要な読み込みも行うので、読み込み済みフラグは不要。
         video.play().catch(() => {
           // 自動再生できない場合は、音声ボタンから再生する。
         });
@@ -915,24 +911,6 @@ section: index
       window.scrollY < 20 &&
       !window.location.hash
     ) {
-      const controller = new AbortController();
-
-      const timer = setTimeout(() => {
-        controller.abort();
-
-        if (window.scrollY < 20) {
-          film.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
-          });
-        }
-      }, 3000);
-
-      function cancelAutoScroll() {
-        clearTimeout(timer);
-        controller.abort();
-      }
-
       const cancelEvents = [
         "wheel",
         "touchstart",
@@ -941,10 +919,22 @@ section: index
         "scroll"
       ];
 
+      const timer = setTimeout(() => {
+        cancelAutoScroll();
+        film.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 3000);
+
+      // 操作があればタイマーを止め、使い終わったイベントも外す。
+      function cancelAutoScroll() {
+        clearTimeout(timer);
+        cancelEvents.forEach((eventName) => {
+          window.removeEventListener(eventName, cancelAutoScroll);
+        });
+      }
+
       cancelEvents.forEach((eventName) => {
         window.addEventListener(eventName, cancelAutoScroll, {
-          passive: true,
-          signal: controller.signal
+          passive: true
         });
       });
     }
